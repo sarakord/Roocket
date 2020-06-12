@@ -17,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 //route::get('panel','Admin\panelController@index');
 route::namespace('Admin')->prefix('/admin')->group(function (){
     route::get('/panel','PanelController@index');
+    route::resource('/articles','ArticleController');
+    route::get('/article','ArticleController@status')->name('article.status');
 });
+
+
+
