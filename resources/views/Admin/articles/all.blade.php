@@ -9,8 +9,9 @@
 
 
 
+
         <div class="table-responsive">
-            <table class="table table-striped table-bordered">
+            <table class="table table-bordered ">
                 <thead>
                 <tr>
                     <th>عنوام مقاله</th>
@@ -21,42 +22,41 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+
                     @foreach($articles as $article)
-
-                        @switch($article->status)
-                            @case(0)
+                        <tr>
+                            @switch($article->status)
+                                @case(0)
                                 @php
-                                   $url = route('article.status' , $article->id);
-                                    $sattus='<a href="'.$url.'" class="badge badge-danger">منتشر نشده</a>';
+                                    $url = route('article.status' , $article->id);
+                                     $status='<a href="'.$url.'" class="btn-sm btn-danger">منتشر نشده</a>';
                                 @endphp
-                            @break
-                            @case(1)
-                            @php
-                                $url = route('article.status' , $article->id);
-                                 $sattus='<a href="'.$url.'" class="badge badge-success">منتشر شده</a>';
-                            @endphp
-                            @break
-                        @endswitch
+                                @break
+                                @case(1)
+                                @php
+                                    $url = route('article.status' , $article->id);
+                                     $status='<a href="'.$url.'" class="btn-sm btn-primary ">منتشر شده</a>';
+                                @endphp
+                                @break
+                            @endswitch
 
-                        <td><a href="{{$article->path()}}">{{$article->title}}</a></td>
-                        <td>{{$article->commentCount}}</td>
-                        <td>{{$article->viewCount}}</td>
-                        <td>{!! $status !!}</td>
-                        <td>
-                            <form action="{{route('articles.destroy' , $article->id)}}" method="post">
-                                @csrf
-                                @method('delete')
-                                <div>
-                                    <button class="badge badge-danger">حذف</button>
-                                    <a href="{{route('articles.edit' , $article->id)}}" class="badge
-                                    badge-warning">ویرایش</a>
+                            <td><a href="{{$article->path()}}">{{$article->title}}</a></td>
+                            <td>{{$article->commentCount}}</td>
+                            <td>{{$article->viewCount}}</td>
+                            <td>{!! $status !!}</td>
+                            <td>
+
+                                <div class="col-1">
+                                    <a href="{{route('articles.destroy' , $article->id)}}" class="btn-sm
+                                    btn-danger">حذف</a>
+                                    <a href="{{route('articles.edit' , $article->id)}}"
+                                            class="btn-sm btn-warning">ویرایش</a>
                                 </div>
-                            </form>
-                        </td>
+                            </td>
+                        </tr>
                     @endforeach
-                        {{$articles->links()}}
-                </tr>
+                    {{$articles->links()}}
+
                 </tbody>
             </table>
         </div>

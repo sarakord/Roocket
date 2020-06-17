@@ -25,6 +25,7 @@ mix.styles([
 mix.scripts([
         'resources/js/files/jquery.min.js',
         'resources/js/files/bootstrap.min.js',
+        'resources/js/files/popper.min.js',
     ],
         'public/admin/js/admin.js');
 

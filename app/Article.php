@@ -14,6 +14,18 @@ class Article extends Model
      *
      * @return array
      */
+
+    protected $fillable = ['user_id', 'title', 'description', 'body', 'images', 'tags'];
+    protected $casts =[
+        'images'=> 'array'
+    ];
+//    protected $attributes = [
+//        'status' => 0,
+//        'viewCount' => 0,
+//        'commentCount' => 0
+//    ];
+
+
     public function sluggable()
     {
         return [
@@ -26,5 +38,10 @@ class Article extends Model
     public function path()
     {
         return "/article/$this->slug";
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

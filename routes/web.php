@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 route::namespace('Admin')->prefix('/admin')->group(function (){
     route::get('/panel','PanelController@index');
     route::resource('/articles','ArticleController');
-    route::get('/article','ArticleController@status')->name('article.status');
+    route::get('/article/{article}','ArticleController@status')->name('article.status');
+    route::post('/panel/upload-image' , 'PanelController@uploadImageSubject');
 });
 
 
