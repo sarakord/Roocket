@@ -20,7 +20,10 @@ route::namespace('Admin')->prefix('/admin')->group(function (){
     route::resource('/articles','ArticleController');
     route::get('/article/{article}','ArticleController@status')->name('article.status');
     route::post('/panel/upload-image' , 'PanelController@uploadImageSubject');
+    route::resource('/courses' ,'CourseController');
 });
+
+
 
 
 

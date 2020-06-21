@@ -41,7 +41,7 @@ class ArticleController extends AdminController
      * @param ArticleRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
 
         $imagesUrl = $this->uploadImages($request->file('images'));
