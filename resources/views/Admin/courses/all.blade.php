@@ -4,11 +4,12 @@
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
         <div class="page-header head-section">
             <h2>دوره ها</h2>
-            <a href="{{route('courses.create')}}" class="btn btn-sm btn-primary">ارسال دوره</a>
+            <div class="btn-group">
+                <a href="{{route('courses.create')}}" class="btn btn-sm btn-primary">ارسال دوره</a>
+                <a href="{{route('episodes.index')}}" class="btn btn-sm btn-primary">بخش ویدئوها</a>
+            </div>
+
         </div>
-
-
-
 
         <div class="table-responsive">
             <table class="table table-bordered ">
@@ -40,10 +41,13 @@
                             <td>
 
                                 <div class="col-1">
-                                    <a href="{{route('courses.destroy' , $course->id)}}" class="btn-sm
-                                    btn-danger">حذف</a>
-                                    <a href="{{route('courses.edit' , $course->id)}}"
-                                            class="btn-sm btn-warning">ویرایش</a>
+                                    <form action="{{route('courses.destroy' , $course->id)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn-sm btn-danger">حذف</button>
+                                        <a href="{{route('courses.edit' , $course->id)}}"
+                                           class="btn-sm btn-warning">ویرایش</a>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

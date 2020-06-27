@@ -14,23 +14,24 @@ class CreateEpisodesTable extends Migration
     public function up()
     {
         Schema::create('episodes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('course_id')->unsigned();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
-            $table->string('type', 10);
             $table->string('title');
-            $table->string('slug');
+            $table->string('type');
             $table->text('description');
-            $table->text('body');
             $table->string('videoUrl');
             $table->string('tags');
-            $table->string('time', 15)->default('00:00:00');
             $table->integer('number');
+            $table->string('time')->default('00:00:00');
             $table->integer('viewCount')->default(0);
-            $table->integer('commentCount')->default(0);
             $table->integer('downloadCount')->default(0);
+            $table->integer('commentCount')->default(0);
             $table->timestamps();
+
         });
+
+
     }
 
     /**
@@ -40,6 +41,7 @@ class CreateEpisodesTable extends Migration
      */
     public function down()
     {
+
         Schema::dropIfExists('episodes');
     }
 }

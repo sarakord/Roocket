@@ -21,6 +21,12 @@ route::namespace('Admin')->prefix('/admin')->group(function (){
     route::get('/article/{article}','ArticleController@status')->name('article.status');
     route::post('/panel/upload-image' , 'PanelController@uploadImageSubject');
     route::resource('/courses' ,'CourseController');
+    route::resource('/episodes' ,'EpisodeController');
+});
+
+Route::get('/' , function(){
+    return auth()->loginUsingId(1);
+
 });
 
 

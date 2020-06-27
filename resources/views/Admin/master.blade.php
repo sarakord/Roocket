@@ -16,4 +16,6 @@
         @yield('content')
     @include('Admin.section.footer')
 </body>
+@include('sweetalert::alert')
+
 </html>

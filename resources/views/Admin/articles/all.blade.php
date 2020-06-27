@@ -7,9 +7,6 @@
             <a href="{{route('articles.create')}}" class="btn btn-sm btn-primary">ارسال مقاله</a>
         </div>
 
-
-
-
         <div class="table-responsive">
             <table class="table table-bordered ">
                 <thead>
@@ -47,10 +44,13 @@
                             <td>
 
                                 <div class="col-1">
-                                    <a href="{{route('articles.destroy' , $article->id)}}" class="btn-sm
-                                    btn-danger">حذف</a>
-                                    <a href="{{route('articles.edit' , $article->id)}}"
-                                            class="btn-sm btn-warning">ویرایش</a>
+                                    <form action="{{route('articles.destroy' , $article->id)}}" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn-sm btn-danger">حذف</button>
+                                        <a href="{{route('articles.edit' , $article->id)}}"
+                                           class="btn-sm btn-warning">ویرایش</a>
+                                    </form>
                                 </div>
                             </td>
                         </tr>

@@ -11,11 +11,12 @@ class CreateArticlesTable extends Migration
      *
      * @return void
      */
+    //هروقت توی مایگریشن فیلد آیدی رو از  bigincrements  استفاده میکنی باید حتما کلید خارجی بصورت  unsignedBigInteger  باشه که بعدا موقع رول بک یا مایگریت گرفتن خطا نگیری
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned();
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('title');
             $table->string('slug');

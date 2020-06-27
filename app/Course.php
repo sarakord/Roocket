@@ -35,11 +35,16 @@ class Course extends Model
 
     public function path()
     {
-        return "/course/$this->slug";
+        return "/courses/$this->slug";
     }
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function episodes()
+    {
+        return $this->hasMany(Episode::class);
     }
 }
