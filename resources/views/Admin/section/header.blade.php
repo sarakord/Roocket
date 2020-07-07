@@ -36,7 +36,7 @@
                 <li><a href="/admin/courses">دوره ها</a></li>
             </ul>
             <ul class="nav nav-sidebar">
-                <li><a href="">کاربران <span class="badge">0</span></a></li>
+                <li><a href="/admin/users">کاربران <span class="badge">0</span></a></li>
                 <li><a href="">پرداختی های موفق <span class="badge">0</span></a></li>
                 <li><a href="">پرداختی های ناموفق <span class="badge">0</span></a></li>
             </ul>

@@ -15,16 +15,24 @@ use Illuminate\Support\Facades\Route;
 
 
 //route::get('panel','Admin\panelController@index');
-route::namespace('Admin')->prefix('/admin')->group(function (){
-    route::get('/panel','PanelController@index');
-    route::resource('/articles','ArticleController');
-    route::get('/article/{article}','ArticleController@status')->name('article.status');
-    route::post('/panel/upload-image' , 'PanelController@uploadImageSubject');
-    route::resource('/courses' ,'CourseController');
-    route::resource('/episodes' ,'EpisodeController');
+route::namespace('Admin')->prefix('/admin')->group(function () {
+    route::get('/panel', 'PanelController@index');
+    route::resource('/articles', 'ArticleController');
+    route::get('/article/{article}', 'ArticleController@status')->name('article.status');
+    route::post('/panel/upload-image', 'PanelController@uploadImageSubject');
+    route::resource('/courses', 'CourseController');
+    route::resource('/episodes', 'EpisodeController');
+    route::resource('/roles', 'RoleController');
+    route::resource('/permissions', 'PermissionController');
+
+    route::group(['prefix'=>'users'], function () {
+        route::get('/', 'UserController@index');
+        route::get('/destroy/{user}', 'UserController@destroy')->name('user.destroy');
+        route::resource('level', 'LevelManageController' , ['parameters'=>['level'=>'user']]);
+    });
 });
 
-Route::get('/' , function(){
+Route::get('/', function () {
     return auth()->loginUsingId(1);
 
 });
