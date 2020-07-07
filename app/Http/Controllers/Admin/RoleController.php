@@ -39,7 +39,7 @@ class RoleController extends Controller
     public function store(RoleRequest $request)
     {
         $role=Role::create($request->all());
-        $role->permissions()->sync($request->permission_id);
+        $role->permissions()->sync($request->input('permission_id'));
         return redirect(route('roles.index'));
     }
 
@@ -75,7 +75,7 @@ class RoleController extends Controller
     public function update(RoleRequest $request, Role $role)
     {
         $role->update($request->all());
-        $role->permissions()->sync($request->permission_id);
+        $role->permissions()->sync($request->input('permission_id'));
         return redirect(route('roles.index'));
     }
 

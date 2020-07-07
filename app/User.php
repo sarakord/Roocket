@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable , hasRole;
 
     /**
      * The attributes that are mass assignable.
@@ -47,16 +47,9 @@ class User extends Authenticatable
         return $this->hasMany(Course::class);
     }
 
-    public function roles()
+    public function isAdmin()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->level == 'admin' ? true : false;
     }
 
-    public function hasRole($role)
-    {
-        if (is_string($role)) {
-            return $this->roles->contains('name', $role);
-        }
-        return !! $role->intersect($this->roles)->count();
-    }
 }

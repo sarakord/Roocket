@@ -14,8 +14,22 @@
 use Illuminate\Support\Facades\Route;
 
 
-//route::get('panel','Admin\panelController@index');
-route::namespace('Admin')->prefix('/admin')->group(function () {
+Route::namespace('Auth')->group(function () {
+    route::get('login', 'LoginController@showLoginForm')->name('login');
+    route::post('login', 'LoginController@login');
+    route::post('logout', 'LoginController@logout')->name('logout');
+
+    route::get('register', 'RegisterController@showRegistrationForm')->name('register');
+    route::post('register', 'RegisterController@register');
+
+    route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.request');
+    route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset');
+    route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
+});
+
+
+route::namespace('Admin')->middleware(['auth','checkAdmin'])->prefix('/admin')->group(function () {
     route::get('/panel', 'PanelController@index');
     route::resource('/articles', 'ArticleController');
     route::get('/article/{article}', 'ArticleController@status')->name('article.status');
@@ -33,11 +47,16 @@ route::namespace('Admin')->prefix('/admin')->group(function () {
 });
 
 Route::get('/', function () {
-    return auth()->loginUsingId(1);
-
+   /* return auth()->loginUsingId(1);*/
+    return view('welcome');
 });
 
 
 
 
 
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
