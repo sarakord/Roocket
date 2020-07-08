@@ -47,6 +47,11 @@ class User extends Authenticatable
         return $this->hasMany(Course::class);
     }
 
+    public function activationCodes()
+    {
+        return $this->hasMany(ActivationCode::class);
+    }
+
     public function isAdmin()
     {
         return $this->level == 'admin' ? true : false;

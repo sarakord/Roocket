@@ -28,6 +28,7 @@ Route::namespace('Auth')->group(function () {
     route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
 });
 
+Route::get('/user/active/email/{token}' , 'UserController@activation')->name('activation.account');
 
 route::namespace('Admin')->middleware(['auth','checkAdmin'])->prefix('/admin')->group(function () {
     route::get('/panel', 'PanelController@index');
@@ -48,15 +49,9 @@ route::namespace('Admin')->middleware(['auth','checkAdmin'])->prefix('/admin')->
 
 Route::get('/', function () {
    /* return auth()->loginUsingId(1);*/
+    //event(new \App\Events\UserActivation(\App\User::find(1)));
     return view('welcome');
 });
 
-
-
-
-
-
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
