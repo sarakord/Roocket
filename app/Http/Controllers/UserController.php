@@ -37,5 +37,7 @@ class UserController extends Controller
         $activationCode->update([
             'used'=>true
         ]);
+
+        return redirect('/');
     }
 }

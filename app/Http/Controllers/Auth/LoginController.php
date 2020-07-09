@@ -9,6 +9,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -107,6 +108,37 @@ class LoginController extends Controller
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+
+    public function redirectToProvider()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function handleProviderCallback()
+    {
+        $social_user=Socialite::driver('google')->user();
+        $user=User::whereEmail($social_user->getEmail())->first();
+
+        if (! $user)
+        {
+            $user=User::create([
+                'name'=>$social_user->getName(),
+                'email'=>$social_user->getEmail(),
+                'password'=>bcrypt($social_user->getId())
+            ]);
+        }
+
+        if ($user->active == 0)
+        {
+            $user->update([
+                'active'=>1
+            ]);
+        }
+
+        auth()->loginUsingId($user->id);
+        return redirect('/');
     }
 
 }
