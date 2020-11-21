@@ -52,7 +52,7 @@ route::namespace('Admin')->middleware(['auth','checkAdmin'])->prefix('/admin')->
 Route::get('/', function () {
    /* return auth()->loginUsingId(1);*/
     //event(new \App\Events\UserActivation(\App\User::find(1)));
-    return view('welcome');
+    return view('Home.index');
 });
 
 

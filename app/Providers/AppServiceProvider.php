@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+
+use Guzzle\Http\Client;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
