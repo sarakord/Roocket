@@ -10,19 +10,20 @@
     "require": {
         "php": "^7.2",
         "ext-json": "*",
+        "artesaos/seotools": "^0.20.0",
         "biscolab/laravel-recaptcha": "^4.1",
         "cviebrock/eloquent-sluggable": "6.0.3",
         "fideloper/proxy": "^4.0",
-        "guzzlehttp/guzzle": "^6.2",
         "google/recaptcha": "^1.2",
-        "laravel/passport": "^2.0",
+        "guzzlehttp/guzzle": "^7.0",
         "intervention/image": "^2.5",
         "laravel/framework": "^6.2",
+        "laravel/passport": "^9.0",
         "laravel/socialite": "^4.4",
         "laravel/tinker": "^2.0",
         "morilog/jalali": "3.*",
+        "paragonie/random_compat": "2.*",
         "realrashid/sweet-alert": "^3.1"
-
     },
     "require-dev": {
         "facade/ignition": "^1.4",

@@ -42,6 +42,10 @@ class Course extends Model
         $this->attributes['description'] = $value;
     }
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function path()
     {

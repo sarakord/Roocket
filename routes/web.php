@@ -50,12 +50,12 @@ route::namespace('Admin')->middleware(['auth','checkAdmin'])->prefix('/admin')->
 Route::get('/','HomeController@index');
 
 Route::get('/articles','ArticleController@index');
-Route::get('/article/{articleSlug}','ArticleController@single');
+Route::get('/article/{article}','ArticleController@single')->name('article.single');
 
 Route::get('/courses','CourseController@index');
-Route::get('/course/{courseSlug}','CourseController@single');
+Route::get('/course/{course}','CourseController@single')->name('course.single');
 
-Route::get('/comment','HomeControllerController@comment');
+Route::post('/comment','HomeController@comment');
 Route::get('/user/active/email/{token}' , 'UserController@activation')->name('activation.account');
 
 Route::get('/home', 'HomeController@index')->name('home');

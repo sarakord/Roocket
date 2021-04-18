@@ -96,3 +96,15 @@
 
 
 @endsection
+
+@push('js')
+    <script>
+        $('#sendCommentModal').on('show.bs.modal' , function (event) {
+            console.log('!!!!')
+            let button = $(event.relatedTarget);
+            let parentId = button.data('parent');
+            let modal = $(this);
+            modal.find("[name='parent_id']").val(parentId);
+        });
+    </script>
+@endpush

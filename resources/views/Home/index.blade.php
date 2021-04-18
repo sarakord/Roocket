@@ -22,8 +22,8 @@
                 <div class="thumbnail">
                     <img src="{{ $course->images['thumb'] }}" alt="">
                     <div class="caption">
-                        <h3><a href="{{ $course->path() }}">{{ $course->title }}</a></h3>
-                        <p>{{ str_limit($course->description , 120) }}</p>
+                        <h3><a href="{{ route('course.single', ['course'=>$course->slug]) }}">{{ $course->title }}</a></h3>
+                        <p>{{ Str::words($course->description , 20) }}</p>
                         <p>
                             <a href="{{ $course->path()  }}" class="btn btn-primary">خرید</a> <a href="{{ $course->path()  }}" class="btn btn-default">اطلاعات بیشتر</a>
                         </p>
@@ -50,9 +50,9 @@
                     <div class="thumbnail">
                         <img src="{{ $article->images['thumb'] }}" alt="">
                         <div class="caption">
-                            <h4><a href="{{ $article->path() }}">{{ $article->title }}</a>
+                            <h4><a href="{{ route('article.single', ['article'=>$article->slug]) }}">{{ $article->title }}</a>
                             </h4>
-                            <p>{{ str_limit($article->description , 120) }}</p>
+                            <p>{{ Str::words($article->description , 20) }}</p>
                         </div>
                         <div class="ratings">
                             <p class="pull-right">{{ $article->viewCount }} بازدید</p>
