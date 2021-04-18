@@ -24,7 +24,7 @@
                 <form action="{{route('logout')}}" method="post">
                     @csrf
                     @method('post')
-                    <button class="btn btn-sm btn-warning" style="margin: 15px">خروج از پنل کاربری</input>
+                    <button class="btn btn-sm btn-warning" style="margin: 15px">خروج از پنل کاربری</button>
                 </form>
             </div>
         </div>

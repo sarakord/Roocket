@@ -30,8 +30,6 @@ Route::namespace('Auth')->group(function () {
     route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
 });
 
-Route::get('/user/active/email/{token}' , 'UserController@activation')->name('activation.account');
-
 route::namespace('Admin')->middleware(['auth','checkAdmin'])->prefix('/admin')->group(function () {
     route::get('/panel', 'PanelController@index');
     route::resource('/articles', 'ArticleController');
@@ -49,11 +47,15 @@ route::namespace('Admin')->middleware(['auth','checkAdmin'])->prefix('/admin')->
     });
 });
 
-Route::get('/', function () {
-   /* return auth()->loginUsingId(1);*/
-    //event(new \App\Events\UserActivation(\App\User::find(1)));
-    return view('Home.index');
-});
+Route::get('/','HomeController@index');
 
+Route::get('/articles','ArticleController@index');
+Route::get('/article/{articleSlug}','ArticleController@single');
+
+Route::get('/courses','CourseController@index');
+Route::get('/course/{courseSlug}','CourseController@single');
+
+Route::get('/comment','HomeControllerController@comment');
+Route::get('/user/active/email/{token}' , 'UserController@activation')->name('activation.account');
 
 Route::get('/home', 'HomeController@index')->name('home');

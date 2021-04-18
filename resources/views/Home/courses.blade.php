@@ -90,62 +90,7 @@
             </tbody> </table>
         <!-- Blog Comments -->
 
-        <!-- Comments Form -->
-        <div class="well">
-            <h4>ثبت نظر :</h4>
-            <form role="form">
-                <div class="form-group">
-                    <textarea class="form-control" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">ارسال</button>
-            </form>
-        </div>
-
-        <hr>
-
-        <!-- Posted Comments -->
-
-        <!-- Comment -->
-        <div class="media">
-            <a class="pull-right" href="#">
-                <img class="media-object" src="http://placehold.it/64x64" alt="">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">حسام موسوی
-                    <small>۱۰ روز قبل</small>
-                    <button class="pull-left btn btn-xs btn-success" data-toggle="modal" data-target="#sendCommentModal" data-parent="21">پاسخ</button>
-                </h4>
-                معمولا طراحان گرافیک برای صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر گرفته شده‌است.
-            </div>
-        </div>
-
-        <!-- Comment -->
-        <div class="media">
-            <a class="pull-right" href="#">
-                <img class="media-object" src="http://placehold.it/64x64" alt="">
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading">حسام موسوی
-                    <small>۱۰ روز قبل</small>
-                    <button class="pull-left btn btn-xs btn-success" data-toggle="modal" data-target="#sendCommentModal" data-parent="21">پاسخ</button>
-                </h4>
-                معمولا طراحان گرافیک برای صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر گرفته شده‌است.
-                <!-- Nested Comment -->
-                <div class="media">
-                    <a class="pull-right" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">حسام موسوی
-                            <small>۱۰ روز قبل</small>
-                        </h4>
-                        معمولا طراحان گرافیک برای صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر گرفته شده‌است.
-                    </div>
-                </div>
-                <!-- End Nested Comment -->
-            </div>
-        </div>
-
+        @include('Home.layouts.comment' , ['comments' => $comments , 'subject' => $course])
     </div>
 
     <!-- Blog Sidebar Widgets Column -->
@@ -176,30 +121,5 @@
             <p>طراح گرافیک از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده استفاده می نماید، تا از نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد.</p>
         </div>
 
-    </div>
-
-    <div class="modal fade" id="sendCommentModal" tabindex="-1" role="dialog" aria-labelledby="sendCommentModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel">ارسال پاسخ</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="#" method="post">
-                        <input type="hidden" name="parent_id" value="0">
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">متن پاسخ:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">ارسال</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">انصراف</button>
-                        </div>
-                    </form>
-                </div>
-
-            </div>
-        </div>
     </div>
 @endsection

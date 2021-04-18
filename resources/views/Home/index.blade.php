@@ -17,69 +17,25 @@
     </div>
     <div class="row ">
 
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
-                <div class="caption">
-                    <h3><a href="#">عنوان اصلی</a></h3>
-                    <p>نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد</p>
-                    <p>
-                        <a href="#" class="btn btn-primary">خرید</a> <a href="#" class="btn btn-default">اطلاعات بیشتر</a>
-                    </p>
-                </div>
-                <div class="ratings">
-                    <p class="pull-left">31 بازدید</p>
+        @foreach($courses as $course)
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+                    <img src="{{ $course->images['thumb'] }}" alt="">
+                    <div class="caption">
+                        <h3><a href="{{ $course->path() }}">{{ $course->title }}</a></h3>
+                        <p>{{ str_limit($course->description , 120) }}</p>
+                        <p>
+                            <a href="{{ $course->path()  }}" class="btn btn-primary">خرید</a> <a href="{{ $course->path()  }}" class="btn btn-default">اطلاعات بیشتر</a>
+                        </p>
+                    </div>
+                    <div class="ratings">
+                        <p class="pull-left">{{ $course->viewCount }} بازدید</p>
+                        {{--<p class="pull-left">{{  Redis::get("views.{$course->id}.courses") }} بازدید</p>--}}
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
 
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
-                <div class="caption">
-                    <h3><a href="#">عنوان اصلی</a></h3>
-                    <p>نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد</p>
-                    <p>
-                        <a href="#" class="btn btn-primary">خرید</a> <a href="#" class="btn btn-default">اطلاعات بیشتر</a>
-                    </p>
-                </div>
-                <div class="ratings">
-                    <p class="pull-left">31 بازدید</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
-                <div class="caption">
-                    <h3><a href="#">عنوان اصلی</a></h3>
-                    <p>نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد</p>
-                    <p>
-                        <a href="#" class="btn btn-primary">خرید</a> <a href="#" class="btn btn-default">اطلاعات بیشتر</a>
-                    </p>
-                </div>
-                <div class="ratings">
-                    <p class="pull-left">31 بازدید</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail">
-                <img src="http://placehold.it/800x500" alt="">
-                <div class="caption">
-                    <h3><a href="#">عنوان اصلی</a></h3>
-                    <p>نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد</p>
-                    <p>
-                        <a href="#" class="btn btn-primary">خرید</a> <a href="#" class="btn btn-default">اطلاعات بیشتر</a>
-                    </p>
-                </div>
-                <div class="ratings">
-                    <p class="pull-left">31 بازدید</p>
-                </div>
-            </div>
-        </div>
 
     </div>
     <hr>
@@ -89,71 +45,23 @@
             <div class="col-sm-12">
                 <h3>مقالات</h3>
             </div>
-            <div class="col-sm-4 col-lg-4 col-md-4">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/320x150" alt="">
-                    <div class="caption">
-                        <h4><a href="#">‌عنوان اصلی</a>
-                        </h4>
-                        <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                    </div>
-                    <div class="ratings">
-                        <p class="pull-right">15 بازدید</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 col-lg-4 col-md-4">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/320x150" alt="">
-                    <div class="caption">
-                        <h4><a href="#">عنوان اصلی</a>
-                        </h4>
-                        <p> نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد</p>
-                    </div>
-                    <div class="ratings">
-                        <p class="pull-right">12 بازدید</p>
+            @foreach($articles as $article)
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+                        <img src="{{ $article->images['thumb'] }}" alt="">
+                        <div class="caption">
+                            <h4><a href="{{ $article->path() }}">{{ $article->title }}</a>
+                            </h4>
+                            <p>{{ str_limit($article->description , 120) }}</p>
+                        </div>
+                        <div class="ratings">
+                            <p class="pull-right">{{ $article->viewCount }} بازدید</p>
+{{--                            <p class="pull-right">{{ Redis::get("views.{$article->id}.articles") }} بازدید</p>--}}
+
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-4 col-lg-4 col-md-4">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/320x150" alt="">
-                    <div class="caption">
-                        <h4><a href="#">عنوان اصلی</a>
-                        </h4>
-                        <p> نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد</p>
-                    </div>
-                    <div class="ratings">
-                        <p class="pull-right">31 بازدید</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 col-lg-4 col-md-4">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/320x150" alt="">
-                    <div class="caption">
-                        <h4><a href="#">عنوان اصلی</a>
-                        </h4>
-                        <p> نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد</p>
-                    </div>
-                    <div class="ratings">
-                        <p class="pull-right">6 بازدید</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 col-lg-4 col-md-4">
-                <div class="thumbnail">
-                    <img src="http://placehold.it/320x150" alt="">
-                    <div class="caption">
-                        <h4><a href="#">دوره لاراول</a>
-                        </h4>
-                        <p> نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد</p>
-                    </div>
-                    <div class="ratings">
-                        <p class="pull-right">18 بازدید</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 @endsection

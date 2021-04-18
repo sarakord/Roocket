@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable , hasRole;
+    use Notifiable , hasRole, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -55,6 +55,11 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->level == 'admin' ? true : false;
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 }

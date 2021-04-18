@@ -16,8 +16,18 @@ class Article extends Model
      */
 
     protected $fillable = ['user_id', 'title', 'description', 'body', 'images', 'tags'];
+
     protected $casts =[
         'images'=> 'array'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'viewCount', 'commentCount','slug'
     ];
 //    protected $attributes = [
 //        'status' => 0,
@@ -43,5 +53,10 @@ class Article extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }

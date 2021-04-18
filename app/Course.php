@@ -11,9 +11,19 @@ class Course extends Model
     use Sluggable;
 
     //protected $fillable = ['user_id', 'type', 'price', 'time', 'title', 'description', 'body','images', 'tags'];
-    protected $guarded = [];
+    protected $guarded = ['id'];
+
     protected $casts = [
         'images' => 'array'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'viewCount', 'commentCount','slug'
     ];
 
     public function sluggable()
@@ -46,5 +56,10 @@ class Course extends Model
     public function episodes()
     {
         return $this->hasMany(Episode::class);
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
     }
 }
