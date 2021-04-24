@@ -40,6 +40,8 @@
                 <li><a href="/admin/courses">دوره ها</a></li>
             </ul>
             <ul class="nav nav-sidebar">
+                <li><a href="{{route('comments.index')}}">نظرات تائید شده <span class="badge">{{$commentSuccessfulCount}}</span></a></li>
+                <li><a href="{{route('comments.unsuccssful')}}">نظرات تائید نشده <span class="badge">{{$commentUnsuccessfulCount}}</span></a></li>
                 <li><a href="/admin/users">کاربران <span class="badge">0</span></a></li>
                 <li><a href="">پرداختی های موفق <span class="badge">0</span></a></li>
                 <li><a href="">پرداختی های ناموفق <span class="badge">0</span></a></li>

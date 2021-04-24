@@ -30,7 +30,7 @@ Route::namespace('Auth')->group(function () {
     route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
 });
 
-route::namespace('Admin')->middleware(['auth','checkAdmin'])->prefix('/admin')->group(function () {
+route::namespace('Admin')->middleware(['auth', 'checkAdmin'])->prefix('/admin')->group(function () {
     route::get('/panel', 'PanelController@index');
     route::resource('/articles', 'ArticleController');
     route::get('/article/{article}', 'ArticleController@status')->name('article.status');
@@ -39,23 +39,25 @@ route::namespace('Admin')->middleware(['auth','checkAdmin'])->prefix('/admin')->
     route::resource('/episodes', 'EpisodeController');
     route::resource('/roles', 'RoleController');
     route::resource('/permissions', 'PermissionController');
+    route::get('/comments/unsuccessful', 'CommentController@unsuccessful')->name('comments.unsuccssful');
+    route::resource('/comments', 'CommentController');
 
-    route::group(['prefix'=>'users'], function () {
+    route::group(['prefix' => 'users'], function () {
         route::get('/', 'UserController@index');
         route::get('/destroy/{user}', 'UserController@destroy')->name('user.destroy');
-        route::resource('level', 'LevelManageController' , ['parameters'=>['level'=>'user']]);
+        route::resource('level', 'LevelManageController', ['parameters' => ['level' => 'user']]);
     });
 });
 
-Route::get('/','HomeController@index');
+Route::get('/', 'HomeController@index');
 
-Route::get('/articles','ArticleController@index');
-Route::get('/article/{article}','ArticleController@single')->name('article.single');
+Route::get('/articles', 'ArticleController@index');
+Route::get('/article/{article}', 'ArticleController@single')->name('article.single');
 
-Route::get('/courses','CourseController@index');
-Route::get('/course/{course}','CourseController@single')->name('course.single');
+Route::get('/courses', 'CourseController@index');
+Route::get('/course/{course}', 'CourseController@single')->name('course.single');
 
-Route::post('/comment','HomeController@comment');
-Route::get('/user/active/email/{token}' , 'UserController@activation')->name('activation.account');
+Route::post('/comment', 'HomeController@comment');
+Route::get('/user/active/email/{token}', 'UserController@activation')->name('activation.account');
 
 Route::get('/home', 'HomeController@index')->name('home');
