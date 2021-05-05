@@ -49,6 +49,11 @@ route::namespace('Admin')->middleware(['auth', 'checkAdmin'])->prefix('/admin')-
     });
 });
 
+Route::middleware(['auth','web'])->group(function (){
+    Route::post('course/payment', 'PaymentController@payment')->name('course.payment');
+    Route::get('course/payment/checker', 'PaymentController@checker')->name('callback');
+});
+
 Route::get('/', 'HomeController@index');
 
 Route::get('/articles', 'ArticleController@index');

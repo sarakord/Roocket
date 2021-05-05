@@ -15,4 +15,6 @@ class CourseController extends Controller
         $comments = $course->comments()->where('approved' , 1)->where('parent_id', 0)->latest()->with('comments')->get();
         return view('Home.courses' , compact('course' , 'comments'));
     }
+
+
 }

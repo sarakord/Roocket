@@ -23,7 +23,8 @@
         "laravel/tinker": "^2.0",
         "morilog/jalali": "3.*",
         "paragonie/random_compat": "2.*",
-        "realrashid/sweet-alert": "^3.1"
+        "realrashid/sweet-alert": "^3.1",
+      "ext-soap": "*"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
