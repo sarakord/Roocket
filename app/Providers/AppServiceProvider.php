@@ -4,6 +4,7 @@ namespace App\Providers;
 
 
 use App\Comment;
+use App\Payment;
 use Guzzle\Http\Client;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
@@ -32,11 +33,17 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         View::composer('Admin.section.header', function ($view) {
-            $unsuccessfulCount = Comment::where('approved', 0)->count();
-            $successfulCount = Comment::where('approved', 1)->count();
+            $commentUnsuccessfulCount = Comment::where('approved', 0)->count();
+            $commentSuccessfulCount = Comment::where('approved', 1)->count();
+
+            $paymentUnsuccessfulCount = Payment::where('payment', 0)->count();
+            $paymentSuccessfulCount = Payment::where('payment', 1)->count();
+
             $view->with([
-                'commentUnsuccessfulCount' => $unsuccessfulCount,
-                'commentSuccessfulCount' => $successfulCount,
+                'commentUnsuccessfulCount' => $commentUnsuccessfulCount,
+                'commentSuccessfulCount' => $commentSuccessfulCount,
+                'paymentUnsuccessfulCount' => $paymentUnsuccessfulCount,
+                'paymentSuccessfulCount' => $paymentSuccessfulCount,
             ]);
         });
     }

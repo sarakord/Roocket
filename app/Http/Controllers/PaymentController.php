@@ -12,7 +12,8 @@ use SoapClient;
 class PaymentController extends Controller
 {
 
-    protected $MerchantID = 'f83cc956-f59f-11e6-889a-005056a205be'; //Required
+    protected $MerchantID = '36da9ab4-0e0b-11e9-aaa7-005056a205be'; //Required
+//    protected $MerchantID = 'f83cc956-f59f-11e6-889a-005056a205be'; //Required
 
     public function payment()
     {

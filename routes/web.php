@@ -41,6 +41,8 @@ route::namespace('Admin')->middleware(['auth', 'checkAdmin'])->prefix('/admin')-
     route::resource('/permissions', 'PermissionController');
     route::get('/comments/unsuccessful', 'CommentController@unsuccessful')->name('comments.unsuccssful');
     route::resource('/comments', 'CommentController');
+    route::get('/payments/unsuccessful', 'PaymentController@unsuccessful')->name('payments.unsuccessful');
+    route::resource('/payments', 'PaymentController');
 
     route::group(['prefix' => 'users'], function () {
         route::get('/', 'UserController@index');
@@ -64,5 +66,9 @@ Route::get('/course/{course}', 'CourseController@single')->name('course.single')
 
 Route::post('/comment', 'HomeController@comment');
 Route::get('/user/active/email/{token}', 'UserController@activation')->name('activation.account');
+
+Route::get('sitemap', 'SitemapController@index');
+Route::get('sitemap-articles', 'SitemapController@articles');
+Route::get('feed/articles', 'FeedController@articles');
 
 Route::get('/home', 'HomeController@index')->name('home');

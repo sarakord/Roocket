@@ -23,6 +23,8 @@
         "laravel/tinker": "^2.0",
         "morilog/jalali": "3.*",
         "paragonie/random_compat": "2.*",
+        "laravelium/sitemap": "6.*",
+        "laravelium/feed": "6.*",
         "realrashid/sweet-alert": "^3.1",
       "ext-soap": "*"
     },
