@@ -27,6 +27,15 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-12">
+                    <label for="title" class="control-label">زبان مقاله</label>
+                    <select name="lang" id="lang" class="form-control">
+                        <option value="fa" selected>فارسی</option>
+                        <option value="en">انگلیسی</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
                     <label for="description" class="control-label">توضیحات کوتاه</label>
                     <textarea rows="5" class="form-control" name="description" id="description" placeholder="توضیحات را وارد کنید" >{{ old('description') }}</textarea>
                 </div>

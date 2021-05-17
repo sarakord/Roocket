@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    {!! SEO::generate() !!}
-    {{--<title>وبسایت راکت</title>--}}
+  {{--  {!! SEO::generate() !!}--}}
+    <title>وبسایت راکت</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/css/home.css" rel="stylesheet">

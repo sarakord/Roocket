@@ -27,6 +27,7 @@ class CreateCoursesTable extends Migration
             $table->string('tags');
             $table->string('time', 15)->default('00:00:00');
             $table->integer('viewCount')->default(0);
+            $table->string('lang')->default('fa');
             $table->integer('commentCount')->default(0);
             $table->timestamps();
         });

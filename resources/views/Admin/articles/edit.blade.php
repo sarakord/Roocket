@@ -3,9 +3,9 @@
 @section('script')
     <script src="/ckeditor/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace('body' ,{
-            filebrowserUploadUrl : '/admin/panel/upload-image',
-            filebrowserImageUploadUrl :  '/admin/panel/upload-image'
+        CKEDITOR.replace('body', {
+            filebrowserUploadUrl: '/admin/panel/upload-image',
+            filebrowserImageUploadUrl: '/admin/panel/upload-image'
         });
     </script>
 @endsection
@@ -25,6 +25,15 @@
                 <div class="col-sm-12">
                     <label for="title" class="control-label">عنوان مقاله</label>
                     <input type="text" class="form-control" name="title" id="title" value="{{ $article->title }}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <label for="title" class="control-label">زبان مقاله</label>
+                    <select name="lang" id="lang" class="form-control">
+                        <option value="fa" {{$article->lang =='fa' ? 'selected':''}}>فارسی</option>
+                        <option value="en" {{$article->lang =='en' ? 'selected':''}}>انگلیسی</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group">
@@ -52,10 +61,10 @@
                             <div class="col-sm-2">
                                 <div class="control-label">
                                     {{--@if ($key != 'thumb')--}}
-                                        {{$key}}
-                                        <input type="radio" name="imagesThumb" value="{{ $image }}" {{
+                                    {{$key}}
+                                    <input type="radio" name="imagesThumb" value="{{ $image }}" {{
                                         $article->images['thumb'] == $image ? 'checked' :'' }} />
-                                        <a href="{{$image}}" target="_blank"><img src="{{$image}}" width="100%"></a>
+                                    <a href="{{$image}}" target="_blank"><img src="{{$image}}" width="100%"></a>
                                     {{--@endif--}}
                                 </div>
                             </div>

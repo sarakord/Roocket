@@ -5,7 +5,11 @@
     <!-- Jumbotron Header -->
     <header class="jumbotron hero-spacer">
         <h1>به راکت خوش آمدید</h1>
-        <p>معمولا طراحان گرافیک برای صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در نظر گرفته شده‌است. از آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه رعایت حق تکثیر متون را ندارند و در همان حال کار آنها به نوعی وابسته به متن می‌باشد آنها با استفاده از محتویات ساختگی، صفحه گرافیکی خود را صفحه‌آرایی می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند.</p>
+        <p>معمولا طراحان گرافیک برای صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا
+            صاحب کار خود نشان دهند که صفحه طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و
+            قلم‌ها و اندازه‌بندی‌ها چگونه در نظر گرفته شده‌است. از آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه
+            رعایت حق تکثیر متون را ندارند و در همان حال کار آنها به نوعی وابسته به متن می‌باشد آنها با استفاده از
+            محتویات ساختگی، صفحه گرافیکی خود را صفحه‌آرایی می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند.
         </p>
     </header>
 
@@ -22,10 +26,12 @@
                 <div class="thumbnail">
                     <img src="{{ $course->images['thumb'] }}" alt="">
                     <div class="caption">
-                        <h3><a href="{{ route('course.single', ['course'=>$course->slug]) }}">{{ $course->title }}</a></h3>
+                        <h3><a href="{{ route('course.single', ['course'=>$course->slug]) }}">{{ $course->title }}</a>
+                        </h3>
                         <p>{{ Str::words($course->description , 20) }}</p>
                         <p>
-                            <a href="{{ $course->path()  }}" class="btn btn-primary">خرید</a> <a href="{{ $course->path()  }}" class="btn btn-default">اطلاعات بیشتر</a>
+                            <a href="{{ $course->path()  }}" class="btn btn-primary">خرید</a> <a
+                                href="{{ $course->path()  }}" class="btn btn-default">اطلاعات بیشتر</a>
                         </p>
                     </div>
                     <div class="ratings">
@@ -50,13 +56,14 @@
                     <div class="thumbnail">
                         <img src="{{ $article->images['thumb'] }}" alt="">
                         <div class="caption">
-                            <h4><a href="{{ route('article.single', ['article'=>$article->slug]) }}">{{ $article->title }}</a>
+                            <h4>
+                                <a href="{{ route('article.single', ['article'=>$article->slug]) }}">{{ $article->title }}</a>
                             </h4>
                             <p>{{ Str::words($article->description , 20) }}</p>
                         </div>
                         <div class="ratings">
                             <p class="pull-right">{{ $article->viewCount }} بازدید</p>
-{{--                            <p class="pull-right">{{ Redis::get("views.{$article->id}.articles") }} بازدید</p>--}}
+                            {{--                            <p class="pull-right">{{ Redis::get("views.{$article->id}.articles") }} بازدید</p>--}}
 
                         </div>
                     </div>

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Facades\App;
 
 class Article extends Model
 {
@@ -52,7 +53,8 @@ class Article extends Model
 
     public function path()
     {
-        return "/article/$this->slug";
+        $local = App::getLocale();
+        return "/$local/article/$this->slug";
     }
 
     public function user()

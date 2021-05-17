@@ -10,15 +10,26 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $articles = Article::latest()->take(12)->get();
-        $courses = Course::latest()->take(4)->get();
+        $lang = app()->getLocale();
+        if (cache()->has("article.$lang")) {
+            $articles = cache("article.$lang");
+        } else {
+            $articles = Article::where('lang', $lang)->latest()->take(12)->get();
+        }
 
-        return view('Home.index',['articles'=>$articles , 'courses'=>$courses]);
+        if (cache()->has("course.$lang")) {
+            $courses = cache("course.$lang");
+        } else {
+            $courses = Course::where('lang', $lang)->latest()->take(4)->get();
+        }
+
+        return view('Home.index', ['articles' => $articles, 'courses' => $courses]);
     }
 
-    public function comment()
+    public
+    function comment()
     {
-        $this->validate(request(),[
+        $this->validate(request(), [
             'comment' => 'required|min:5'
         ]);
 

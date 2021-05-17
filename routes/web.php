@@ -67,8 +67,8 @@ Route::get('/course/{course}', 'CourseController@single')->name('course.single')
 Route::post('/comment', 'HomeController@comment');
 Route::get('/user/active/email/{token}', 'UserController@activation')->name('activation.account');
 
-Route::get('sitemap', 'SitemapController@index');
-Route::get('sitemap-articles', 'SitemapController@articles');
-Route::get('feed/articles', 'FeedController@articles');
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/local', function (){
+    return app()->getLocale();
+});

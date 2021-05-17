@@ -103,7 +103,7 @@
 
     <!-- Blog Sidebar Widgets Column -->
     <div class="col-md-4">
-        @if (!auth()->user()->checkLearning($course))
+        @if (auth()->guest() || !auth()->user()->checkLearning($course))
             <div class="well">
                 <form action="{{route('course.payment')}}" method="post">
                     @csrf

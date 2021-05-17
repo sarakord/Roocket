@@ -26,6 +26,7 @@ class CreateArticlesTable extends Migration
             $table->string('tags');
             $table->boolean('status')->default(0);
             $table->integer('viewCount')->default(0);
+            $table->string('lang')->default('fa');
             $table->integer('commentCount')->default(0);
             $table->timestamps();
         });
