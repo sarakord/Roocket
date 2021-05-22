@@ -51,7 +51,16 @@ route::namespace('Admin')->middleware(['auth', 'checkAdmin'])->prefix('/admin')-
     });
 });
 
-Route::middleware(['auth','web'])->group(function (){
+route::middleware(['auth', 'web'])->prefix('/user/panel')->group(function () {
+    route::get('/', 'UserController@index')->name('user.panel');
+    route::get('/history', 'UserController@history')->name('user.panel.history');
+    route::get('/vip' , 'UserController@vip')->name('user.panel.vip');
+
+    route::post('/payment' , 'UserController@vipPayment')->name('user.panel.vip.payment');
+    route::get('/checker' , 'UserController@vipChecker')->name('user.panel.vip.checker');
+});
+
+Route::middleware(['auth', 'web'])->group(function () {
     Route::post('course/payment', 'PaymentController@payment')->name('course.payment');
     Route::get('course/payment/checker', 'PaymentController@checker')->name('callback');
 });
@@ -69,6 +78,6 @@ Route::get('/user/active/email/{token}', 'UserController@activation')->name('act
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/local', function (){
+Route::get('/local', function () {
     return app()->getLocale();
 });
