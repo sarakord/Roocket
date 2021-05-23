@@ -8,38 +8,34 @@
         <!-- Blog Post -->
 
         <!-- Title -->
-        <h1>عنوان دوره</h1>
+        <h1>{{$course->title}}</h1>
 
         <!-- Author -->
         <p class="lead small">
-            توسط <a href="#">حسام موسوی</a>
+            توسط <a href="#">{{$course->user->name}}</a>
         </p>
 
         <hr>
 
         <!-- Date/Time -->
-        <p><span class="glyphicon glyphicon-time"></span> ارسال شده در ۱۲ خرداد ۹۶</p>
+        <p><span class="glyphicon glyphicon-time"></span> ارسال شده در {{jdate($course->created_at)->format('d M Y')}}
+        </p>
 
         <hr>
 
         <!-- Post Content -->
-        <p dir="rtl">دیمونس در واقع فرایند های پشت زمینه سیستم شما رو در بر می گیره. که معمولا یا در هنگام بوت شدن سیستم
-            شروع به کار میکنه و یا بعد از اینکه به دسکتاپ وارد شدید.</p>
+        <p dir="rtl">{!! $course->description !!}</p>
 
-        <p dir="rtl"><strong>Shell</strong></p>
-
-        <p dir="rtl">&nbsp;به احتمال زیاد چیزی به اسم خط فرمان لینوکس رو شنیده باشید. این قسمت رو شل یا پوسته میگن. در
-            واقع جایی هستش که شما می تونید از طریق متن در یک محیط متنی با کامپیوتر ارتباط برقرار کنید. اینجا جاییه که
-            باعث میشه مردم بیشترین ترس رو نسبت به لینوکس پیدا کنند. البته با حضور دسکتاپ های گرافیکی مدرن کمتر برای
-            انجام کارهای روزمره به محیط کامند لاین احتیاج پیدا می کنیم.&nbsp;</p>
-
-        <p dir="rtl"><strong>Graphical Server</strong></p>
-
-        <p dir="rtl">&nbsp;در واقع این قسمت رو میشه یک زیر سیستم به حساب آورد که می تونه گرافیک رو روی صفحه نمایش، نشون
-            بده. اغلب اوقات ما اون رو با اسم X-Server هم می بینیم.</p>
         <hr>
         <div class="alert alert-danger" role="alert">برای مشاهده تمامی قسمت ها باید این دوره را خریداری کنید</div>
-        <div class="alert alert-danger" role="alert">برای مشاهده تمامی قسمت ها باید عضویت ویژه تهیه کنید</div>
+
+        @if (auth()->check())
+            @if (! auth()->user()->isActive())
+                <div class="alert alert-danger" role="alert">برای مشاهده تمامی قسمت ها باید عضویت ویژه تهیه کنید</div>
+            @endif
+        @else
+            <div class="alert alert-danger" role="alert">برای مشاهده تمامی قسمت ها باید ابتدا وارد سایت شوید</div>
+        @endif
 
         <h3>قسمت های دوره</h3>
         <table class="table table-condensed table-bordered">
@@ -52,47 +48,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>قسمت اول</td>
-                <td>۱۰:۲۰</td>
-                <td>
-                    <a href="#"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>قسمت اول</td>
-                <td>۱۰:۲۰</td>
-                <td>
-                    <a href="#"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>قسمت اول</td>
-                <td>۱۰:۲۰</td>
-                <td>
-                    <a href="#"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>قسمت اول</td>
-                <td>۱۰:۲۰</td>
-                <td>
-                    <a href="#"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>قسمت اول</td>
-                <td>۱۰:۲۰</td>
-                <td>
-                    <a href="#"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
-                </td>
-            </tr>
-
+            @foreach($course->episodes()->get() as $episode)
+                <tr>
+                    <th scope="row">{{$episode->number}}</th>
+                    <td>{{$episode->title}}</td>
+                    <td>{{$episode->time}}</td>
+                    <td>
+                        <a href="{{$episode->download()}}">
+                            <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
 
             </tbody>
         </table>
@@ -103,7 +70,7 @@
 
     <!-- Blog Sidebar Widgets Column -->
     <div class="col-md-4">
-        @if (auth()->guest() || !auth()->user()->checkLearning($course))
+        @if (auth()->guest() || ! auth()->user()->checkLearning($course))
             <div class="well">
                 <form action="{{route('course.payment')}}" method="post">
                     @csrf

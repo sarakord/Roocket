@@ -59,11 +59,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        $lang = request()->segment(1);
-        App::setLocale($lang);
+      /*  $lang = request()->segment(1);
+        App::setLocale($lang);*/
         Route::middleware('web')
             ->namespace($this->namespace)
-            ->prefix($lang)
+//            ->prefix($lang)
             ->group(base_path('routes/web.php'));
     }
 

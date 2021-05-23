@@ -20,4 +20,9 @@ class Episode extends Model
         return "/courses/{$this->course->slug}/episode/{$this->number}" ;
     }
 
+    public function download()
+    {
+        if (! auth()->check()) return '#';
+    }
+
 }

@@ -32,15 +32,24 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-left">
-                <li>
-                    <a href="#">دوره‌ها</a>
-                </li>
-                <li>
-                    <a href="#">مقالات</a>
-                </li>
-                <li>
-                    <a href="#">درباره‌ما</a>
-                </li>
+                @if (auth()->check())
+                    <li>
+                        <a href="{{ route('user.panel') }}">ورود به پنل</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('logout') }}">خروج</a>
+                    </li>
+                    @else
+                    <li>
+                        <a href="#">دوره‌ها</a>
+                    </li>
+                    <li>
+                        <a href="#">مقالات</a>
+                    </li>
+                    <li>
+                        <a href="#">درباره‌ما</a>
+                    </li>
+                @endif
             </ul>
         </div>
         <!-- /.navbar-collapse -->

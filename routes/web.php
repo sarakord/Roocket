@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('Auth')->group(function () {
     route::get('login', 'LoginController@showLoginForm')->name('login');
     route::post('login', 'LoginController@login');
-    route::post('logout', 'LoginController@logout')->name('logout');
+    route::get('logout', 'LoginController@logout')->name('logout');
     Route::get('login/google', 'LoginController@redirectToProvider');
     Route::get('login/google/callback', 'LoginController@handleProviderCallback');
 
