@@ -7578,7 +7578,7 @@
                 "ext-pdo": "*"
             },
             "suggest": {
-                "ext-soap": "*",
+
                 "ext-xdebug": "*",
                 "phpunit/php-invoker": "^2.0.0"
             },
@@ -8551,8 +8551,8 @@
     "prefer-lowest": false,
     "platform": {
         "php": "^7.2",
-        "ext-json": "*",
-        "ext-soap": "*"
+        "ext-json": "*"
+
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"

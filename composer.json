@@ -25,8 +25,7 @@
         "paragonie/random_compat": "2.*",
         "laravelium/sitemap": "6.*",
         "laravelium/feed": "6.*",
-        "realrashid/sweet-alert": "^3.1",
-      "ext-soap": "*"
+        "realrashid/sweet-alert": "^3.1"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
@@ -76,6 +75,5 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
-
     }
 }
