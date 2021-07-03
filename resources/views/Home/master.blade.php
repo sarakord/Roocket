@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
   {{--  {!! SEO::generate() !!}--}}
     <title>وبسایت راکت</title>
 
@@ -86,6 +87,7 @@
 
 <script src="/js/app.js"></script>
 @stack('js')
+<script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
 </body>
 
 </html>

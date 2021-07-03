@@ -30,6 +30,9 @@ Route::namespace('Auth')->group(function () {
     route::post('password/reset', 'ResetPasswordController@reset')->name('password.update');
 });
 
+// Download Route
+Route::get('/download/{episode}', 'CourseController@download');
+
 route::namespace('Admin')->middleware(['auth', 'checkAdmin'])->prefix('/admin')->group(function () {
     route::get('/panel', 'PanelController@index');
     route::resource('/articles', 'ArticleController');
@@ -51,20 +54,19 @@ route::namespace('Admin')->middleware(['auth', 'checkAdmin'])->prefix('/admin')-
     });
 });
 
-route::middleware(['auth', 'web'])->prefix('/user/panel')->group(function () {
-    route::get('/', 'UserController@index')->name('user.panel');
-    route::get('/history', 'UserController@history')->name('user.panel.history');
-    route::get('/vip' , 'UserController@vip')->name('user.panel.vip');
-
-    route::post('/payment' , 'UserController@vipPayment')->name('user.panel.vip.payment');
-    route::get('/checker' , 'UserController@vipChecker')->name('user.panel.vip.checker');
-});
-
 Route::middleware(['auth', 'web'])->group(function () {
     Route::post('course/payment', 'PaymentController@payment')->name('course.payment');
     Route::get('course/payment/checker', 'PaymentController@checker')->name('callback');
-});
 
+    route::group(['prefix' => 'user/panel'], function () {
+        route::get('/', 'UserController@index')->name('user.panel');
+        route::get('/history', 'UserController@history')->name('user.panel.history');
+        route::get('/vip', 'UserController@vip')->name('user.panel.vip');
+
+        Route::post('payment', 'UserController@payment')->name('user.panel.vip.payment');
+        Route::get('checker', 'UserController@checker')->name('user.panel.checker');
+    });
+});
 Route::get('/', 'HomeController@index');
 
 Route::get('/articles', 'ArticleController@index');

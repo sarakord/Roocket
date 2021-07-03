@@ -29,12 +29,18 @@
         <hr>
         <div class="alert alert-danger" role="alert">برای مشاهده تمامی قسمت ها باید این دوره را خریداری کنید</div>
 
-        @if (auth()->check())
-            @if (! auth()->user()->isActive())
-                <div class="alert alert-danger" role="alert">برای مشاهده تمامی قسمت ها باید عضویت ویژه تهیه کنید</div>
+        @if(auth()->check())
+            @if($course->type == 'vip')
+                @if(! user()->isActive())
+                    <div class="alert alert-danger" role="alert">برای مشاهده تمامی قسمت ها باید عضویت ویژه تهیه کنید</div>
+                @endif
+            @elseif($course->type == 'cash')
+                @if(! user()->checkLearning($course))
+                    <div class="alert alert-danger" role="alert">برای مشاهده تمامی قسمت ها باید این دوره را خریداری کنید</div>
+                @endif
             @endif
         @else
-            <div class="alert alert-danger" role="alert">برای مشاهده تمامی قسمت ها باید ابتدا وارد سایت شوید</div>
+            <div class="alert alert-danger" role="alert">برای مشاهده این دوره نیاز است ابتدا وارد سایت شوید</div>
         @endif
 
         <h3>قسمت های دوره</h3>

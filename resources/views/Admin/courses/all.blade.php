@@ -41,11 +41,11 @@
                             <td>
 
                                 <div class="col-1">
-                                    <form action="{{route('courses.destroy' , $course->id)}}" method="post">
+                                    <form action="{{route('courses.destroy' , $course->slug)}}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button class="btn-sm btn-danger">حذف</button>
-                                        <a href="{{route('courses.edit' , $course->id)}}"
+                                        <a href="{{route('courses.edit' , $course->slug)}}"
                                            class="btn-sm btn-warning">ویرایش</a>
                                     </form>
                                 </div>
